@@ -1,6 +1,7 @@
 makeChange(amount, denominations = []):
     ways = list();
     
+    denominations.sort()
     #Set number of ways to make change for 0 be 1 way
     for x in range(0, amount+1):
         ways.append(0)        
