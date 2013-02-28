@@ -4,3 +4,7 @@ and uncompress.
 
 compress <filetobecompressed> <nameofcompressedfile>
 uncompress <nameofcompressedfile> <filetobeuncompressed>
+
+There are much better compressors out there and this is not
+optimized as the header size is always fixed regardless of
+incidence of bytes. Don't hurt me.
