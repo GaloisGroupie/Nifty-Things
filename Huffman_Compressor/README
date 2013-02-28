@@ -1,0 +1,6 @@
+This is a file compressor using Huffman compression. To use,
+simply run make and you should now get applications compress
+and uncompress.
+
+compress <filetobecompressed> <nameofcompressedfile>
+uncompress <nameofcompressedfile> <filetobeuncompressed>
