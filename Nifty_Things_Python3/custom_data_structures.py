@@ -32,7 +32,10 @@ class updatable_priority_queue():
         self._key_index_dict[key] = (len(self._heap)-1)
 
         self._bubble_up(key)
-
+    
+    # Swaps two elements inside the queue. Order and property of the
+    # queue may not be maintained. Only other update we make is to 
+    # update the index value we have of them in our dictionary
     def _swap_elements(self,elmt1,elmt2):
         # Get indices of elements
         elmt1_index = self._key_index_dict[elmt1]
@@ -47,6 +50,9 @@ class updatable_priority_queue():
         self._key_index_dict[elmt1] = elmt2_index
         self._key_index_dict[elmt2] = elmt1_index
 
+    # Swaps the position of an element and its parent if the element is
+    # 'lighter' than its parent. We do this recursively as many times as
+    # we need until the parent is no longer heavier than the element
     def _bubble_up(self,key):
         if not key in self._key_index_dict:
             return
@@ -68,7 +74,9 @@ class updatable_priority_queue():
             # Bubble up as far as possible through recursive calls 
             self._bubble_up(key)
          
-
+    # Swaps position of element and its parent if element is 
+    # 'heavier' than its parent. We do this recursively as many times as
+    # we need until the parent is no longer heavier than the element
     def _trickle_down(self,key):
         if not key in self._key_index_dict:
             return
@@ -103,6 +111,8 @@ class updatable_priority_queue():
             self._swap_elements(key,swap_child)
             self._trickle_down(key)
 
+    # We lazily check update the position of the element. It's okay.
+    # it's only 2 * log(n)
     def update_key(self,key):
         self._trickle_down(key)
         self._bubble_up(key)
@@ -131,6 +141,8 @@ class updatable_priority_queue():
             
             return min_elmt
 
+    # Swap with the 'last' element so that we maintain our heap property of 
+    # having our binary tree be complete
     def delete_key(key):
         if not key in self._key_index_dict:
             return
