@@ -1,3 +1,16 @@
+""" Updatable priority queue that does insertions and updates in log(n) time.
+    The underlying data structure for the queue is an array which we create a 
+    binary heap out of. A dictionary is also used for constant time look up
+    for the updates. The dictionary key is an element we put inside the 
+    priority queue and the value is its current index in the list.
+
+    **** Important ****
+    The class only works on things which have a properly defined __cmp__()
+    method as it uses it to decide the heap structure. Each time an element
+    is updated, the priority queue MUST be told that they element was updated
+    using the update_key() method. If this is not done, the properties heap
+    structure may not be held and the priority queue will be incorrect """
+
 class updatable_priority_queue():
 
     # Create a list to serve as our heap and a dictionary
@@ -117,3 +130,15 @@ class updatable_priority_queue():
             self._trickle_down(farthest_elmt)
             
             return min_elmt
+
+    def delete_key(key):
+        if not key in self._key_index_dict:
+            return
+
+        last_element = self._heap[-1]
+        self._swap_elements(key,last_element)
+
+        self.update_key(key)
+
+        del self._heap[-1]
+        del self._key_index_dict[last_element]
