@@ -1,3 +1,8 @@
+"""Function adapted from another function used for something I can't
+   quite remember. Just thought it was neat that although the original
+   intent of the function was not for sorting, minimal modification
+   gave a sorting algorithm"""
+
 from collections import deque
 def crappyMergeSort(arrayOfStuff = list()):
 
