@@ -5,8 +5,8 @@
     priority queue and the value is its current index in the list.
 
     **** Important ****
-    The class only works on things which have a properly defined __cmp__()
-    method as it uses it to decide the heap structure. Each time an element
+    The class only works on things which have a properly defined comparison 
+    as it uses it to decide the heap structure. Each time an element
     is updated, the priority queue MUST be told that they element was updated
     using the update_key() method. If this is not done, the properties heap
     structure may not be held and the priority queue will be incorrect """
@@ -67,7 +67,7 @@ class updatable_priority_queue():
         parent_index = (key_index-1)//2
         parent = self._heap[parent_index]
 
-        if key.__cmp__(parent) < 0:
+        if key < parent:
         
             self._swap_elements(parent,key)
        
@@ -100,14 +100,14 @@ class updatable_priority_queue():
             child1 = self._heap[child1_index]
             child2 = self._heap[child2_index]
             
-            if child1.__cmp__(child2) < 0:
+            if child1 < child2:
                 swap_child = child1
             else:
                 swap_child = child2
 
         # If the child is lighter than the parent(key), then
         # we swap the two elements
-        if swap_child.__cmp__(key) < 0:
+        if swap_child < key:
             self._swap_elements(key,swap_child)
             self._trickle_down(key)
 
