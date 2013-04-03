@@ -1,3 +1,0 @@
-Graph program that reads input in from file and creates a graph. 
-Algorithms such as Prim's Algorithm and Djiktsra's can then be run
-on it
